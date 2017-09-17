@@ -12,24 +12,24 @@
 #### Building yourself
 
 ```bash
-git clone https://github.com/mmornati/docker-ghostblog.git
-cd docker-ghostblog
-docker build -t mmornati/docker-ghostblog .
+git clone https://github.com/mmornati/docker-ghostblog-cloudinary.git
+cd docker-ghostblog-cloudinary
+docker build -t mmornati/docker-ghostblog-cloudinary .
 ```
 
 #### From DockerHub
 
 ```bash
-docker pull mmornati/docker-ghostblog
+docker pull mmornati/docker-ghostblog-cloudinary
 ```
 
 ### Usage
 
-    docker run -d -p 80:2368 mmornati/docker-ghostblog
+    docker run -d -p 80:2368 mmornati/docker-ghostblog-cloudinary
 
 #### Customizing Ghost
 
-    docker run -d -p 80:2368 -e [ENVIRONMENT_VARIABLES] -v <override-dir>:/ghost-override mmornati/docker-ghostblog
+    docker run -d -p 80:2368 -e [ENVIRONMENT_VARIABLES] -v <override-dir>:/ghost-override mmornati/docker-ghostblog-cloudinary
 
 Environment variables are used to personalise your Ghost Blog configuration. Could be:
 
@@ -45,6 +45,6 @@ Environment variables are used to personalise your Ghost Blog configuration. Cou
 A complete running command line could be:
 
 ```bash
-docker run -d -p 2368:2368 -e WEB_URL=http://test.blog -e SERVER_HOST=12.4.23.5 -e SERVER_PORT=4000 -e CLOUDINARY_URL=cloudinary://87237872387:aaaaaaaaaaaa@blog-mornati-net -v /opt/data:/ghost-override dockerfile/ghost
+docker run -d -p 2368:2368 -e WEB_URL=http://test.blog -e SERVER_HOST=12.4.23.5 -e SERVER_PORT=4000 -e CLOUDINARY_URL=cloudinary://87237872387:aaaaaaaaaaaa@blog-mornati-net -v /opt/data:/ghost-override mmornati/docker-ghostblog-cloudinary
 ```
 

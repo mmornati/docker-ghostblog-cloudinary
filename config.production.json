@@ -1,0 +1,44 @@
+{
+  "url": "__WEB_URL__",
+  "server": {
+    "port": __SERVER_PORT__,
+    "host": "__SERVER_HOST__"
+  },
+  "database": {
+    "client": "__DB_CLIENT__",
+    "connection": {
+      "filename": "__DB_SQLITE_PATH__"
+    }
+  },
+  "mail": {
+    "transport": "Direct"
+  },
+  "logging": {
+    "transports": [
+      "file",
+      "stdout"
+    ]
+  },
+  "storage": {
+    "active": "cloudinary-store",
+    "cloudinary-store": {
+      "configuration": {
+        "image": {
+          "quality": "auto:good",
+          "secure": "true"
+        },
+        "file": {
+          "use_filename": "true", 
+          "unique_filename": "false", 
+          "phash": "true", 
+          "overwrite": "false", 
+          "invalidate": "true"
+        }       
+      }
+    }
+  },
+  "process": "local",
+  "paths": {
+    "contentPath": "/ghost-override/content"
+  }
+}

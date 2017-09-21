@@ -11,7 +11,7 @@ RUN npm install cloudinary-store --production --loglevel=error && \
   npm install --production --loglevel=error
 
 #Create the Docker Ghost Blog
-FROM mmornati/docker-ghostblog:1.8.7
+FROM mmornati/docker-ghostblog:1.9.0
 LABEL maintainer="Marco Mornati <marco@mornati.net>"
 
 #Install Cloudinary Store into the internal modules

@@ -3,7 +3,7 @@
 #
 
 #Build step for Ghost Plugins
-FROM node:6.11.3-alpine as plugin-builder
+FROM node:6-alpine as plugin-builder
 WORKDIR /builder
 RUN npm install cloudinary-store --production --loglevel=error && \
   mv node_modules/cloudinary-store ./cloudinary-store && \

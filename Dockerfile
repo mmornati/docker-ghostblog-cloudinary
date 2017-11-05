@@ -15,21 +15,5 @@ FROM mmornati/docker-ghostblog:1.16.2
 LABEL maintainer="Marco Mornati <marco@mornati.net>"
 
 #Install Cloudinary Store into the internal modules
-COPY --from=plugin-builder /builder/cloudinary-store /ghost/blog/versions/1.16.2/core/server/adapters/storage/cloudinary-store
-COPY config.production.json /ghost/blog
-
-# Set environment variables.
-ENV NODE_ENV production
-
-# Expose ports.
-EXPOSE 2368
-
-#HealthCheck
-HEALTHCHECK --interval=5m --timeout=3s \
-  CMD echo "GET / HTTP/1.1" | nc -v localhost 2368 || exit 1
-
-# Define mountable directories.
-VOLUME ["/ghost-override"]
-
-# Define default command.
-CMD ["/bin/sh", "/ghost/run-ghost.sh"]
+COPY --from=plugin-builder /builder/cloudinary-store $GHOST_INSTALL/versions/1.16.2/core/server/adapters/storage/cloudinary-store
+COPY config.production.json $GHOST_INSTALL

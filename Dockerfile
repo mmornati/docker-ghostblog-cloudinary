@@ -15,5 +15,5 @@ FROM mmornati/docker-ghostblog:1.16.2
 LABEL maintainer="Marco Mornati <marco@mornati.net>"
 
 #Install Cloudinary Store into the internal modules
-COPY --from=plugin-builder /builder/cloudinary-store $GHOST_INSTALL/versions/1.16.2/core/server/adapters/storage/cloudinary-store
+COPY --from=plugin-builder /builder/cloudinary-store $GHOST_INSTALL/current/core/server/adapters/storage/cloudinary-store
 COPY config.production.json $GHOST_INSTALL

@@ -15,13 +15,13 @@ install:
 # Assist with ci test debugging:
 #   - DEBUG=1
 before_script:
-    - image="mmornati/docker-ghostblog-cloudinary"
+    - image="mmornati/docker-ghostblog"
     - if [ -n "$TRAVIS_TAG" ]; then
       image="$image:$TRAVIS_TAG";
       fi
     - docker build -t "$image" .
     - docker inspect "$image"
-    - docker run -d --name blogtest -p 2368:2368 -e NODE_ENV=development -e WEB_URL=http://localhost "$image"
+    - docker run -d --name blogtest -p 2368:2368 -e NODE_ENV=production "$image"
     - until nc -z $(docker inspect --format='{{.NetworkSettings.IPAddress}}' blogtest) 2368; do
           echo "waiting for ghostblog container...";
           sleep 2;
@@ -33,6 +33,7 @@ script:
 
 after_script:
     - docker images
+    - docker logs blogtest
     - docker stop blogtest
     - docker rm blogtest
 

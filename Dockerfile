@@ -11,9 +11,16 @@ RUN npm install cloudinary-store --production --loglevel=error && \
   npm install --production --loglevel=error
 
 #Create the Docker Ghost Blog
-FROM mmornati/docker-ghostblog:1.16.2
+FROM mmornati/docker-ghostblog:latest
 LABEL maintainer="Marco Mornati <marco@mornati.net>"
 
 #Install Cloudinary Store into the internal modules
 COPY --from=plugin-builder --chown=node /builder/cloudinary-store $GHOST_INSTALL/current/core/server/adapters/storage/cloudinary-store
-COPY --chown=node config.production.json $GHOST_INSTALL
+RUN ghost config storage.active "cloudinary-store" && \
+    ghost config storage.cloudinary-store.configuration.image.quality "auto:good" && \
+    ghost config storage.cloudinary-store.configuration.image.secure "true" && \
+    ghost config storage.cloudinary-store.configuration.file.use_filename "false" && \
+    ghost config storage.cloudinary-store.configuration.file.unique_filename "true" && \
+    ghost config storage.cloudinary-store.configuration.file.phash "true" && \
+    ghost config storage.cloudinary-store.configuration.file.overwrite "false" && \
+    ghost config storage.cloudinary-store.configuration.file.invalidate "true"

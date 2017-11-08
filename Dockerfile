@@ -16,11 +16,4 @@ LABEL maintainer="Marco Mornati <marco@mornati.net>"
 
 #Install Cloudinary Store into the internal modules
 COPY --from=plugin-builder --chown=node /builder/cloudinary-store $GHOST_INSTALL/current/core/server/adapters/storage/cloudinary-store
-RUN ghost config storage.active "cloudinary-store" && \
-    ghost config storage.cloudinary-store.configuration.image.quality "auto:good" && \
-    ghost config storage.cloudinary-store.configuration.image.secure "true" && \
-    ghost config storage.cloudinary-store.configuration.file.use_filename "false" && \
-    ghost config storage.cloudinary-store.configuration.file.unique_filename "true" && \
-    ghost config storage.cloudinary-store.configuration.file.phash "true" && \
-    ghost config storage.cloudinary-store.configuration.file.overwrite "false" && \
-    ghost config storage.cloudinary-store.configuration.file.invalidate "true"
+COPY --chown=node config.production.json $GHOST_INSTALL

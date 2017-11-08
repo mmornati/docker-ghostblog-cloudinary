@@ -1,13 +1,13 @@
 {
-  "url": "__WEB_URL__",
+  "url": "http://localhost:2368/",
   "server": {
-    "port": "__SERVER_PORT__",
-    "host": "__SERVER_HOST__"
+    "port": 2368,
+    "host": "0.0.0.0"
   },
   "database": {
-    "client": "__DB_CLIENT__",
+    "client": "sqlite3",
     "connection": {
-      "filename": "__DB_SQLITE_PATH__"
+      "filename": "/var/lib/ghost/content/data/ghost.db"
     }
   },
   "mail": {
@@ -37,8 +37,8 @@
       }
     }
   },
-  "process": "local",
+  "process": "systemd",
   "paths": {
-    "contentPath": "__GHOST_CONTENT_PATH__"
+    "contentPath": "/var/lib/ghost/content"
   }
 }

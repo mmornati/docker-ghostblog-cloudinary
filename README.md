@@ -66,3 +66,13 @@ Starting from this version your mount point should change to:
  ... -v /opt/data/content:/var/lib/ghost/content
 ```
 
+### Upgrade to version 1.17.0
+In the latest version ghost is installed with the production method, this changed the name of the database name used by default from **ghost-local.db** to **ghost.db**.
+This means to be anble to use the Docker image starting with version 1.17.0 you have to rename you database file:
+
+```bash
+mv ghost-local.db ghost.db
+```
+
+into the ghost content/database folder.
+
